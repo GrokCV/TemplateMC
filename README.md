@@ -23,18 +23,18 @@
 
 在 `configs.tex` 中定义的颜色供模板使用，下面的颜色表以直观的色块展示各颜色及其 RGB 值，整体风格简洁大气，适合于技术文档和论文模板。
 
-| **颜色名称**   | **色块展示**                                                                                                                                                   | **RGB 值**         | **说明**         |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------- |
-| **lightblue**  | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(46,117,182);"></span>                                                          | (46, 117, 182)     | **浅蓝色（主题色）**  |
-| **midblue**    | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(0,82,155);"></span>                                                            | (0, 82, 155)       | **中蓝色（主题色）**  |
-| **darkblue**   | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(0,53,107);"></span>                                                             | (0, 53, 107)       | **深蓝色（主题色）**  |
-| **myblue**     | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(41,128,185);"></span>                                                            | (41, 128, 185)     | 深蓝             |
-| **myred**      | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(192,57,43);"></span>                                                             | (192, 57, 43)      | 酒红             |
-| **mygreen**    | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(39,174,96);"></span>                                                             | (39, 174, 96)      | 祖母绿           |
-| **mypurple**   | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(155,89,182);"></span>                                                            | (155, 89, 182)     | 浅紫             |
-| **myorange**   | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(211,84,0);"></span>                                                              | (211, 84, 0)       | 橙色             |
-| **myitem**     | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(0,0,0);"></span>                                                                  | (0, 0, 0)          | 黑色             |
-| **borderblue** | <span style="display:inline-block;width:50px;height:20px;background-color: rgb(0,50,100);"></span>                                                               | (0, 50, 100)       | 边框蓝色         |
+| **颜色名称**   | **色块展示**                                                                                                                                                        | **RGB 值**         | **说明**         |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------- |
+| **lightblue**  | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(46,117,182)" /></svg>                                                                               | (46, 117, 182)     | **浅蓝色（主题色）**  |
+| **midblue**    | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(0,82,155)" /></svg>                                                                                 | (0, 82, 155)       | **中蓝色（主题色）**  |
+| **darkblue**   | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(0,53,107)" /></svg>                                                                                 | (0, 53, 107)       | **深蓝色（主题色）**  |
+| **myblue**     | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(41,128,185)" /></svg>                                                                               | (41, 128, 185)     | 深蓝             |
+| **myred**      | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(192,57,43)" /></svg>                                                                                | (192, 57, 43)      | 酒红             |
+| **mygreen**    | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(39,174,96)" /></svg>                                                                                | (39, 174, 96)      | 祖母绿           |
+| **mypurple**   | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(155,89,182)" /></svg>                                                                               | (155, 89, 182)     | 浅紫             |
+| **myorange**   | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(211,84,0)" /></svg>                                                                                | (211, 84, 0)       | 橙色             |
+| **myitem**     | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(0,0,0)" /></svg>                                                                                   | (0, 0, 0)          | 黑色             |
+| **borderblue** | <svg width="50" height="20"><rect width="50" height="20" fill="rgb(0,50,100)" /></svg>                                                                                | (0, 50, 100)       | 边框蓝色         |
 ---
 
 ### 2. **字体设置**
