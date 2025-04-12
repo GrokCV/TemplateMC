@@ -404,7 +404,7 @@
 \BehindEqBox[style=dashed]{$\displaystyle x^2 + y^2 = r^2$}
 
 % 同时修改多个属性
-\BehindEqBox[color=black, border=2pt, padding=4pt]{$\displaystyle F = ma$}
+\BehindEqBox[color=black, border=2pt, padding=4mm]{$\displaystyle F = ma$}
 
 % 取消内边距（紧贴内容）
 \BehindEqBox[padding=0pt]{$\displaystyle \int_a^b f(x)\,dx$}
