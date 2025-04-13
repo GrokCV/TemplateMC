@@ -548,11 +548,13 @@ This block highlights essential information in a green box.
 #### 颜色示例： 
 * **主题色**
 `lightblue` `midblue` `darkblue`
-![theme](./theme.png)
+
+![theme](image/theme.png)  
 
 * **其他颜色**
 `myred` `myorange` `mygreen` `mypurple` `myitem`
-![其他颜色](./其他颜色.png)
+
+![other_colors](image/other_colors.png)  
 
 ---
 
