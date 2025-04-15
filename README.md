@@ -160,6 +160,7 @@
 - 修改图片路径：将 `demo.jpg` 替换为实际图片的路径。
 - 修改图片大小：调整 `width` 参数。
 
+
 ---
 
 ## 主文件结构
@@ -563,11 +564,73 @@ This block highlights essential information in a green box.
 ### 2. **字体设置**
 <a id="字体设置"></a>
 
-模板使用了以下字体：
+采用 XeLaTeX 编译时，需加载以下宏包以实现中西文字体统一管理：
 
-- **英文字体**：`Liberation Sans` 和 `Liberation Mono`
-- **中文字体**：`Noto Sans CJK SC`
-- **数学字体**：`TeX Gyre Termes Math`
+latex
+
+```latex
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{unicode-math}
+```
+
+#### 英文字体设置
+
+* ​**正文字体**​：使用 `\setmainfont` 设置，若要将正文字体修改为 Times New Roman（新罗马字体），可使用 `\setmainfont{Times New Roman}`。
+
+latex
+
+```latex
+\setmainfont{Times New Roman}
+```
+
+* ​**无衬线字体**​：使用 `\setsansfont` 设置，若修改为新罗马字体类似的无衬线字体，可根据实际字体情况设置，比如 `\setsansfont{Arial}` （Arial 是常见无衬线字体）。若想坚持使用新罗马风格无衬线字体（如果有对应字体），假设字体名为 `Times New Roman Sans`，则：
+
+latex
+
+```latex
+\setsansfont{Times New Roman Sans}
+```
+
+* ​**等宽字体**​：使用 `\setmonofont` 设置，若要修改为 Consolas（常见等宽字体），可使用 `\setmonofont{Consolas}`。若有新罗马风格等宽字体（假设名为 `Times New Roman Mono`），则：
+
+latex
+
+```latex
+\setmonofont{Times New Roman Mono}
+```
+
+#### 数学公式字体设置
+
+使用 `\setmathfont` 设置数学公式字体，若想让数学部分使用新罗马风格字体，示例：
+
+latex
+
+```latex
+\setmathfont{TeX Gyre Termes Math} % 该字体类似 New Roman 风格
+```
+
+#### 中文字体设置
+
+* ​**主要中文字体**​：用 `\setCJKmainfont` 设置，如 `\setCJKmainfont{Noto Sans CJK SC}`。若要更换中文字体，例如更换为宋体（假设系统中有 `SimSun` 字体），则：
+
+latex
+
+```latex
+\setCJKmainfont{SimSun}
+```
+
+* ​**中文无衬线字体**​：使用 `\setCJKsansfont`，例 `\setCJKsansfont{Noto Sans CJK SC}`。若要更换为黑体（假设系统中有 `SimHei` 字体），则：
+
+latex
+
+```latex
+\setCJKsansfont{SimHei}
+```
+
+* ​**中文等宽字体**​：用 `\setCJKmonofont`，如 `\setCJKmonofont{Noto Sans CJK SC}`。若要更换为其他等宽中文字体，可按需设置。
+
+若无需区分宋体或黑体，相关宏定义可省略。
 
 ### 3. **页眉页脚设置**
 <a id="页眉页脚设置"></a>
