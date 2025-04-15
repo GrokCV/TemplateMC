@@ -564,7 +564,7 @@ This block highlights essential information in a green box.
 ### 2. **字体设置**
 <a id="字体设置"></a>
 
-采用 XeLaTeX 编译时，需加载以下宏包以实现中西文字体统一管理：
+在 `configs.tex` 中已加载以下宏包以实现中西文字体统一管理：
 
 latex
 
