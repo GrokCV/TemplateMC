@@ -1,0 +1,265 @@
+% config.tex
+% 指定 XeLaTeX 编译
+%!TeX program = xelatex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 文档类与全局设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{beamer}
+%tikz包
+\usepackage{amsmath, amssymb, xcolor, tikz}
+\usetikzlibrary{calc}  % 计算坐标
+\usetikzlibrary{backgrounds}  % 背景支持（如果想使用 on background layer）
+\usepackage[most]{tcolorbox}
+\usepackage{xparse}
+
+% 采用 XeLaTeX 时加载 fontspec 与 xeCJK，实现中西文字体统一管理
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+% 设置英文字体
+\setmainfont{Liberation Sans} 
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}
+% 设置数学公式字体
+\setmathfont{TeX Gyre Termes Math} % 数学部分使用 New Roman 风格字体
+
+% 设置中文字体（可根据需求调整）
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Sans CJK SC} % 主要中文黑体
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans CJK SC}
+% 如果不需要区分宋体或黑体，相关宏定义可以省略
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 图形、色彩与数学设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usepackage[table]{xcolor}    % 表格色块
+\usepackage{booktabs}         % 三线表格式
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+\setbeamercolor{block title}{fg=black,bg=gray!10}
+\setbeamerfont{block title}{size=\normalsize,family=\rmfamily}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer 主题与风格设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 清除默认页眉与 frametitle 模板（后续自定义）
+\setbeamertemplate{headline}{}
+\setbeamertemplate{frametitle}{}
+\setbeamertemplate{itemize item}[circle]
+
+% 内外主题（可根据需求替换）
+\useoutertheme[subsection=true]{miniframes} 
+\useinnertheme{default}
+\usecolortheme{default}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 颜色定义（可自定义调色板）
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{lightblue}{RGB}{70,130,180}
+\definecolor{midblue}{RGB}{28,70,130}
+\definecolor{darkblue}{RGB}{10,40,80}
+\definecolor{myred}{RGB}{150,50,30}
+\definecolor{mygreen}{RGB}{45,125,77}
+\definecolor{mypurple}{RGB}{120,61,137}
+\definecolor{myorange}{RGB}{190,88,32}
+\definecolor{myitem}{RGB}{35,35,35}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 导航栏与页眉设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置顶部导航栏（用于章节、子章节导航）
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1ex]{section in head/foot}
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+  \end{beamercolorbox}%
+}
+\setbeamercolor{section in head/foot}{bg=darkblue, fg=white}
+\setbeamercolor{subsection in head/foot}{bg=midblue, fg=white}
+
+% 自定义非封面页的页眉（显示 frametitle）
+\setbeamertemplate{headline}{%
+  \ifnum\value{framenumber}>1
+    \begin{tikzpicture}[remember picture,overlay]
+      % 使用 \raisebox 可微调文本基线，保持与正文垂直居中
+      \node[anchor=west, font=\normalsize, text=black, xshift=0.2cm, yshift=-0.4cm]
+            at (current page.north west){\insertframetitle};
+      \draw[line width=1pt, color=midblue]
+            ([yshift=-0.7cm]current page.north west) -- ([yshift=-0.7cm]current page.north east);
+    \end{tikzpicture}
+  \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 图注样式设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamerfont{caption}{size=\footnotesize}
+\setbeamercolor{caption}{fg=black}
+% 此处使用默认字体，确保中文统一为 Noto Sans CJK SC
+\setbeamerfont{caption name}{size=\footnotesize}
+\setbeamercolor{caption name}{fg=black}
+\setbeamertemplate{caption}[numbered]
+\renewcommand{\figurename}{图}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 列表样式设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 自定义无序列表图标，采用 \raisebox 微调图标位置
+\newcommand{\useBigCircleItem}{%
+  \setbeamertemplate{itemize item}{\raisebox{0.3ex}{\tikz{\draw[myitem, fill=myitem] (0,0) circle (2pt);}}}%
+  \setbeamertemplate{itemize subitem}{\raisebox{0.3ex}{\tikz{\draw[myitem, fill=myitem] (0,0) circle (2pt);}}}%
+  \setbeamertemplate{itemize subsubitem}{\raisebox{0.3ex}{\tikz{\draw[myitem, fill=myitem] (0,0) circle (2pt);}}}%
+}
+\newcommand{\useSmallCircleItem}{%
+  \setbeamertemplate{itemize item}{\raisebox{0.35ex}{\tikz{\draw[myitem, fill=myitem, opacity=0.8] (0,0) circle (1pt);}}}%
+  \setbeamertemplate{itemize subitem}{\raisebox{0.35ex}{\tikz{\draw[myitem, fill=myitem, opacity=0.8] (0,0) circle (1pt);}}}%
+  \setbeamertemplate{itemize subsubitem}{\raisebox{0.35ex}{\tikz{\draw[myitem, fill=myitem, opacity=0.8] (0,0) circle (1pt);}}}%
+}
+% 默认使用大圆圈
+\useBigCircleItem
+
+% 有序列表样式
+\setbeamercolor{enumerate item}{fg=darkblue}
+\setbeamertemplate{enumerate item}{%
+  \usebeamerfont*{enumerate item}%
+  \color{enumerate item.fg}\insertenumlabel.%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 页脚设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[fill=lightblue, minimum width=0.3\paperwidth, minimum height={0.4cm+1pt}, anchor=south west]
+         at ([xshift=-1pt,yshift=-1pt]current page.south west) (leftblock) {};
+    \node[fill=midblue, minimum width=0.6\paperwidth, minimum height={0.4cm+1pt}, anchor=south west]
+         at ([xshift=0.3\paperwidth-1pt,yshift=-1pt]current page.south west) (midblock) {};
+    \node[fill=darkblue, minimum width={0.1\paperwidth+1pt}, minimum height={0.4cm+1pt}, anchor=south west]
+         at ([xshift=0.9\paperwidth-1pt,yshift=-1pt]current page.south west) (rightblock) {};
+    \node[anchor=center, yshift=0.5pt, font=\tiny, text=white] at (leftblock.center)
+         {程明明, http://mmcheng.net};
+    \node[anchor=center, yshift=0.5pt, font=\tiny, text=white] at (midblock.center)
+         {大规模图像的多粒度目标检测};
+    \node[anchor=center, yshift=0.5pt, font=\tiny, text=white] at (rightblock.center)
+         {\insertframenumber};
+  \end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 表格样式宏定义
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\PlainTable}[1]{%
+  {\footnotesize
+   \setlength{\tabcolsep}{6pt}%
+   #1%
+  }%
+}
+\newcommand{\ThreeLineTable}[1]{%
+  {\footnotesize
+   \setlength{\tabcolsep}{6pt}%
+   #1%
+  }%
+}
+\newcommand{\AltColorTable}[1]{%
+  {\footnotesize
+   \setlength{\tabcolsep}{6pt}%
+   \rowcolors{2}{gray!20}{white}%
+   #1%
+   \rowcolors{2}{}{}%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%强调块（适用于公式等）
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 定义参数 key 和默认值
+\pgfkeys{
+  /BehindEqBox/.is family, /BehindEqBox,
+  color/.initial = midblue,
+  border/.initial = 1pt,
+  style/.initial = solid,
+  padding/.initial = 2.8mm
+}
+
+% 定义命令：支持键值对参数 + 内容
+\NewDocumentCommand{\BehindEqBox}{O{} m}{%
+  % 加载参数
+  \pgfkeys{/BehindEqBox, #1}
+
+  \vspace{1em}
+  \begin{center}
+    \begin{tikzpicture}[remember picture, overlay]
+      \node[inner sep=\pgfkeysvalueof{/BehindEqBox/padding}] (E) {#2};
+
+      \coordinate (A) at ([xshift=-25pt]E.south west);
+      \coordinate (B) at ([xshift=25pt]E.north east);
+
+      \begin{pgfonlayer}{background}
+        \filldraw[fill=\pgfkeysvalueof{/BehindEqBox/color}, opacity=0.1, rounded corners=0.35cm]
+          (A) rectangle (B);
+
+        \draw[
+          line width=\pgfkeysvalueof{/BehindEqBox/border},
+          draw=\pgfkeysvalueof{/BehindEqBox/color},
+          opacity=0.2,
+          rounded corners=0.35cm,
+          \pgfkeysvalueof{/BehindEqBox/style}
+        ] 
+        (A) rectangle (B);
+      \end{pgfonlayer}
+    \end{tikzpicture}
+  \end{center}
+  \vspace{1em}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%字体高亮块
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 替换原 block 环境
+\newtcolorbox{beamerblockbox}[3][]{%
+  enhanced,
+  breakable,
+  colback=#2!10,             % 内容背景（透明度 80%）
+  colframe=#2,               % 框颜色 = 标题栏颜色
+  coltitle=white,            % 标题文字颜色
+  fonttitle=\large,
+  title=#3,
+  boxed title style={
+    colback=#2,
+    top=2pt, bottom=2pt,
+    left=2pt, right=2pt,
+    sharp corners=northwest,
+    sharp corners=northeast,
+  },
+  boxrule=0pt,
+  arc=1.5mm,
+  shadow={0pt}{-1pt}{1.5mm}{black!30},
+  left=2pt, right=2pt,
+  top=2pt, bottom=2pt,
+  before skip=6pt,  % block与上文之间的空隙
+  #1,
+}
+
+% 替换默认 beamer block 环境
+\let\oldblock\block
+\renewenvironment{block}[1]{\begin{beamerblockbox}{midblue}{#1}}{\end{beamerblockbox}}
+
+\let\oldalertblock\alertblock
+\renewenvironment{alertblock}[1]{\begin{beamerblockbox}{myred}{#1}}{\end{beamerblockbox}}
+
+\let\oldexampleblock\exampleblock
+\renewenvironment{exampleblock}[1]{\begin{beamerblockbox}{myorange}{#1}}{\end{beamerblockbox}}
