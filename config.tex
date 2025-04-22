@@ -159,6 +159,24 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 注释宏定义
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{cornernotecounter}
+\newcommand{\cornernote}[1]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south west, xshift=0.6cm, yshift=0.45cm] at (current page.south west) {%
+      {\scriptsize\color{gray}\textsuperscript{\thecornernotecounter} #1}%
+    };
+  \end{tikzpicture}%
+}
+
+\newcommand{\cornerfootnote}[1]{%
+  \stepcounter{cornernotecounter}%
+  \textsuperscript{\thecornernotecounter}%
+  \cornernote{#1}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 表格样式宏定义
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\PlainTable}[1]{%
