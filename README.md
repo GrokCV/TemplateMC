@@ -17,7 +17,8 @@
   - [2. 修改内容](#修改内容)
   - [3. 修改页眉和页脚配置](#修改页眉和页脚配置)
   - [4. 字体色块](#字体色块)
-  - [5. 插入图片](#插入图片)
+  - [5. 更改字体](#字体色块)
+  - [6. 插入图片](#插入图片)
 - [主文件结构](#主文件结构)
   - [1. 封面页](#封面页)
   - [2. 目录页](#目录页)
@@ -148,7 +149,29 @@
 更多说明点击链接跳转
   - [7. 插入公式推导页](#插入公式推导页)
 
-### 5. **插入图片**
+
+### 5. **更改字体**
+<a id="更改字体"></a>
+在config.tex文件中找
+```layex
+% 设置英文字体
+\setmainfont{Liberation Sans} 
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}
+% 设置数学公式字体
+\setmathfont{TeX Gyre Termes Math} % 数学部分使用 New Roman 风格字体
+
+% 设置中文字体（可根据需求调整）
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Sans CJK SC} % 主要中文黑体
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans CJK SC}
+% 如果不需要区分宋体或黑体，相关宏定义可以省略
+```
+更多说明点击链接跳转
+  - [字体设置](#字体设置)
+    
+### 6. **插入图片**
 <a id="插入图片"></a>
 
 使用 `includegraphics` 插入图片：
