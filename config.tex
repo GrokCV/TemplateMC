@@ -81,6 +81,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 导航栏与页眉设置
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
 % 设置顶部导航栏（用于章节、子章节导航）
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1ex]{section in head/foot}
@@ -90,19 +91,22 @@
 \setbeamercolor{section in head/foot}{bg=darkblue, fg=white}
 \setbeamercolor{subsection in head/foot}{bg=midblue, fg=white}
 
-% 自定义非封面页的页眉（显示 frametitle）
+% 自定义页眉（仅在非封面页显示 frametitle 和横线，且 frametitle 不为空时才显示）
 \setbeamertemplate{headline}{%
   \ifnum\value{framenumber}>1
-    \begin{tikzpicture}[remember picture,overlay]
-      % 使用 \raisebox 可微调文本基线，保持与正文垂直居中
-      \node[anchor=west, font=\normalsize, text=black, xshift=0.2cm, yshift=-0.4cm]
-            at (current page.north west){\insertframetitle};
-      \draw[line width=1pt, color=midblue]
-            ([yshift=-0.7cm]current page.north west) -- ([yshift=-0.7cm]current page.north east);
-    \end{tikzpicture}
+    \ifx\insertframetitle\@empty
+      % 不显示任何内容
+    \else
+      \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=west, font=\normalsize, text=black, xshift=0.2cm, yshift=-0.4cm]
+              at (current page.north west){\insertframetitle};
+        \draw[line width=1pt, color=midblue]
+              ([yshift=-0.7cm]current page.north west) -- ([yshift=-0.7cm]current page.north east);
+      \end{tikzpicture}
+    \fi
   \fi
 }
-
+\makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 图注样式设置
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,6 +160,24 @@
     \node[anchor=center, yshift=0.5pt, font=\tiny, text=white] at (rightblock.center)
          {\insertframenumber};
   \end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 注释宏定义
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{cornernotecounter}
+\newcommand{\cornernote}[1]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south west, xshift=0.6cm, yshift=0.45cm] at (current page.south west) {%
+      {\scriptsize\color{gray}\textsuperscript{\thecornernotecounter} #1}%
+    };
+  \end{tikzpicture}%
+}
+
+\newcommand{\cornerfootnote}[1]{%
+  \stepcounter{cornernotecounter}%
+  \textsuperscript{\thecornernotecounter}%
+  \cornernote{#1}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
