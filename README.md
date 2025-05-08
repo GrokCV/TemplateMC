@@ -220,6 +220,8 @@
 ### 2. **目录页**
 <a id="目录页"></a>
 
+![TemplateMC](image/TemplateMC-1.jpg)  
+
 提供了一个目录页，后续内容并非按照这个目录进行，内容仅为示例
 
 ```latex
@@ -236,6 +238,8 @@
 
 ### 3. **内容页**
 <a id="内容页"></a>
+
+![TemplateMC](image/TemplateMC-2.jpg)  
 
 这里给出了一个带有文字段落和表格的示例
 
@@ -272,6 +276,8 @@
 ### 4. **项目列表页**
 <a id="项目列表页"></a>
 
+![TemplateMC](image/TemplateMC-3.jpg)  
+
 ```latex
 \begin{frame}{\textcolor{myblue}{D}\textcolor{myred}{O}\textcolor{mygreen}{C}\textcolor{mypurple}{X} 行动倡议}
   \begin{columns}
@@ -297,6 +303,8 @@
 
 ### 5. **两栏内容示例页**
 <a id="两栏内容示例页"></a>
+
+![TemplateMC](image/TemplateMC-4.jpg)  
 
 ```latex
 \begin{frame}{Two-Column Example}
@@ -344,6 +352,8 @@
 ### 6. **图像页**
 <a id="图像页"></a>
 
+![TemplateMC](image/TemplateMC-5.jpg)  
+
 ```latex
 \begin{frame}{Image}
   \begin{itemize}
@@ -366,6 +376,8 @@
 
 ### 7. **插入公式推导页**
 <a id="插入公式推导页"></a>
+
+![TemplateMC](image/TemplateMC-6.jpg)  
 
 ```latex
 \begin{frame}{Annual Performance Metrics}
@@ -453,6 +465,8 @@
 ### 8 **文字强调块**
 <a id="文字强调块"></a>
 
+![TemplateMC](image/TemplateMC-7.jpg)  
+
 在 Beamer 中，可以使用不同类型的色块（block）来**强调内容**、**区分信息类型**，让幻灯片更清晰有重点。
 
 | 类型           | 命令名           | 用途说明                              |
@@ -479,6 +493,8 @@
 
 #### 示例展示：
 
+![TemplateMC](image/TemplateMC-8.jpg)  
+
 ```latex
 \begin{block}{Information Block}
 This is a general informational block.
@@ -502,6 +518,8 @@ This block highlights essential information in a green box.
 
 ### 9. **图表**
 <a id="图表"></a>
+
+![TemplateMC](image/TemplateMC-9.jpg)  
 
 ```latex
 \begin{frame}{Bar charts}
@@ -544,6 +562,8 @@ This block highlights essential information in a green box.
 ### 10. **问答页**
 <a id="问答页"></a>
 
+![TemplateMC](image/TemplateMC-10.jpg)  
+
 ```latex
 \begin{frame}{Questions and Answers}
   \centering
@@ -559,6 +579,8 @@ This block highlights essential information in a green box.
 
 ### 11. **结束页**
 <a id="结束页"></a>
+
+![TemplateMC](image/TemplateMC-11.jpg)  
 
 ```latex
 \begin{frame}[plain]
