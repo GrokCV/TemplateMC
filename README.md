@@ -6,7 +6,7 @@
 
 [快速使用本模板](#快速使用本模板) 
 
-[目录](#目录) | [文件结构](#文件结构) | [主文件结构](#主文件结构) | [配置文件](#配置文件) | [颜色定义](#颜色定义) | [字体设置](#字体设置)
+[目录](#目录) | [文件结构](#文件结构) | [主文件结构](#主文件结构) | [配置文件](#配置文件) | [颜色定义](#颜色定义) | [字体设置](#字体设置) | [更新日志](#更新日志)
 
 ## 目录
 <a id="目录"></a>
@@ -727,3 +727,32 @@ latex
 
 本模板提供了一个美观且功能丰富的框架，适合学术报告或项目展示。通过修改 `configs.tex` 和 `TemplateMC.tex` 中的内容，您可以轻松定制模板的样式和内容。希望本 README 能帮助您快速上手，欢迎大家使用！
 
+## 更新日志
+<a id="更新日志"></a>
+
+###  2025.5.8
+#### 可以添加脚注
+
+
+使用方法：
+
+```latex
+需要脚注添加的文本\cornerfootnote{脚注内容}
+```
+
+- **示例**：在图片示例页的图注上有个脚注
+
+```latex
+\begin{frame}{Image}
+  \begin{itemize}
+    \item The example image is as follows
+  \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.68\textwidth]{image/demo.jpg}
+    \caption{示例图片\cornerfootnote{仅用于示范}}
+  \end{figure}
+\end{frame}
+```
+
+![TemplateMC](image/TemplateMC-5.jpg)  
