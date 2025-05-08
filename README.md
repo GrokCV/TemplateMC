@@ -207,6 +207,8 @@
 ### 1. **封面页**
 <a id="封面页"></a>
 
+![TemplateMC](image/TemplateMC-0.jpg)  
+
 在这里可以更改标题、姓名，机构等
 
 ```latex
