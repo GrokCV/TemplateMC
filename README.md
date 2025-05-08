@@ -448,6 +448,8 @@
 
 ##### **示例：**
 
+![TemplateMC](image/TemplateMC-7.jpg)  
+
 ```latex
 % 改变背景颜色
 \BehindEqBox[color=red]{$\displaystyle E = mc^2$}
@@ -465,7 +467,7 @@
 ### 8 **文字强调块**
 <a id="文字强调块"></a>
 
-![TemplateMC](image/TemplateMC-7.jpg)  
+![TemplateMC](image/TemplateMC-8.jpg)  
 
 在 Beamer 中，可以使用不同类型的色块（block）来**强调内容**、**区分信息类型**，让幻灯片更清晰有重点。
 
@@ -492,8 +494,6 @@
 ```
 
 #### 示例展示：
-
-![TemplateMC](image/TemplateMC-8.jpg)  
 
 ```latex
 \begin{block}{Information Block}
