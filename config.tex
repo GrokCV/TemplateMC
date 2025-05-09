@@ -6,6 +6,7 @@
 % 文档类与全局设置
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass{beamer}
+
 %tikz包
 \usepackage{amsmath, amssymb, xcolor, tikz}
 \usetikzlibrary{calc}  % 计算坐标
@@ -13,25 +14,47 @@
 \usepackage[most]{tcolorbox}
 \usepackage{xparse}
 
-% 采用 XeLaTeX 时加载 fontspec 与 xeCJK，实现中西文字体统一管理
+%字体设置
 \usepackage{fontspec}
 \usepackage{xeCJK}
-\usepackage{fontspec}
 \usepackage{unicode-math}
+\usepackage{etoolbox} % 用于开关切换
 
-% 设置英文字体
-\setmainfont{Liberation Sans} 
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
-% 设置数学公式字体
-\setmathfont{TeX Gyre Termes Math} % 数学部分使用 New Roman 风格字体
+\newtoggle{fontBlackTheme}
+\togglefalse{fontBlackTheme}
 
-% 设置中文字体（可根据需求调整）
-\usepackage{xeCJK}
-\setCJKmainfont{Noto Sans CJK SC} % 主要中文黑体
-\setCJKsansfont{Noto Sans CJK SC}
-\setCJKmonofont{Noto Sans CJK SC}
-% 如果不需要区分宋体或黑体，相关宏定义可以省略
+\newcommand{\UseBlackFont}{\toggletrue{fontBlackTheme}}
+\newcommand{\UseSongFont} { \togglefalse{fontBlackTheme}}
+
+\UseSongFont   % ← 这里启用“宋体+Times New Roman”主题
+% 或者 \UseBlackFont ← 启用“黑体+Liberation Sans”主题
+
+%—— 根据开关选择字体 —— 
+\iftoggle{fontBlackTheme}{
+  % —— 黑体 + Liberation Sans —— 
+  % 英文字体
+  \setmainfont{Liberation Sans}
+  \setsansfont{Liberation Sans}
+  \setmonofont{Liberation Mono}
+  % 数学字体
+  \setmathfont{TeX Gyre Termes Math}
+  % 中文黑体
+  \setCJKmainfont{Noto Sans CJK SC}
+  \setCJKsansfont{Noto Sans CJK SC}
+  \setCJKmonofont{Noto Sans CJK SC}
+}{
+  % —— 宋体 + New Roman 风格 —— 
+  % 英文字体
+  \setmainfont{Times New Roman}        % 或 TeX Gyre Termes 
+  \setsansfont{Times New Roman}         % 可选
+  \setmonofont{Times New Roman}         % 可选
+  % 数学字体（New Roman 样式）
+  \setmathfont{TeX Gyre Termes Math}
+  % 中文宋体
+  \setCJKmainfont{Noto Serif CJK SC}
+  \setCJKsansfont{Noto Serif CJK SC}
+  \setCJKmonofont{Noto Serif CJK SC}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 图形、色彩与数学设置
