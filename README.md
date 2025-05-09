@@ -112,6 +112,10 @@
 \end{frame}
 ```
 
+效果图如下：
+
+![TemplateMC](image/subtitle.jpg)  
+
 #### 其他
 
 - 添加新页面：复制 `frame` 环境并修改内容。
