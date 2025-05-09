@@ -128,16 +128,23 @@
 
 ```latex
 \setbeamertemplate{headline}{%
-  \ifnum\value{framenumber}>1
-    \begin{tikzpicture}[remember picture,overlay]
-      \node[anchor=west, font=\normalsize, text=black, xshift=0.2cm, yshift=-0.35cm]
-            at (current page.north west){\insertframetitle};
-      \draw[line width=1pt, color=midblue]
-            ([yshift=-0.7cm]current page.north west) -- ([yshift=-0.7cm]current page.north east);
-    \end{tikzpicture}
-  \fi
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1ex]{section in head/foot}
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+  \end{beamercolorbox}%
 }
+\setbeamercolor{section in head/foot}{bg=darkblue, fg=white}
+\setbeamercolor{subsection in head/foot}{bg=midblue, fg=white}
 ```
+
+页眉（页标题）修改为
+
+```latex
+\begin{frame}{页标题}
+...
+\end{frame}
+```
+
+横线在无标题时自动隐藏
 
 #### **页脚**
 
