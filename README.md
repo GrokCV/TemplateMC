@@ -673,11 +673,11 @@ This block highlights essential information in a green box.
 }
 ```
 
----
-
 ##### 换用其他字体
 
 只需将 `\setmainfont{…}`、`\setCJKmainfont{…}` 中的字体名改为你想用的即可，重新编译生效。
+
+---
 
 ### 3. **页眉页脚设置**
 <a id="页眉页脚设置"></a>
