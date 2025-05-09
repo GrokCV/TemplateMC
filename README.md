@@ -99,7 +99,7 @@
 有页标题/横线
 
 ```latex
-\begin{frame}[有页标题/横线]
+\begin{frame}{有页标题/横线}
 ...
 \end{frame}
 ```
@@ -112,7 +112,7 @@
 \end{frame}
 ```
 
-#### 不使用
+#### 其他
 
 - 添加新页面：复制 `frame` 环境并修改内容。
 - 修改表格：使用 `\ThreeLineTable` 或其他表格样式。
@@ -180,22 +180,13 @@
 
 ### 5. **更改字体**
 <a id="更改字体"></a>
+
 在 `configs.tex` 文件中找
 ```layex
-% 设置英文字体
-\setmainfont{Liberation Sans} 
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
-% 设置数学公式字体
-\setmathfont{TeX Gyre Termes Math} % 数学部分使用 New Roman 风格字体
-
-% 设置中文字体（可根据需求调整）
-\usepackage{xeCJK}
-\setCJKmainfont{Noto Sans CJK SC} % 主要中文黑体
-\setCJKsansfont{Noto Sans CJK SC}
-\setCJKmonofont{Noto Sans CJK SC}
-% 如果不需要区分宋体或黑体，相关宏定义可以省略
+\UseSongFont   % ← 这里启用“宋体+Times New Roman”主题
+% 或者 \UseBlackFont ← 启用“黑体+Liberation Sans”主题
 ```
+
 更多说明点击链接跳转
   - [字体设置](#字体设置)
     
@@ -650,73 +641,43 @@ This block highlights essential information in a green box.
 ### 2. **字体设置**
 <a id="字体设置"></a>
 
-在 `configs.tex` 中已加载以下宏包以实现中西文字体统一管理：
-
-latex
+#### 定义开关与命令
 
 ```latex
-\usepackage{fontspec}
-\usepackage{xeCJK}
-\usepackage{unicode-math}
+\newtoggle{fontBlackTheme}                  % 开关
+\newcommand{\UseBlackFont}{\toggletrue{fontBlackTheme}}   % 黑体主题
+\newcommand{\UseSongFont} { \togglefalse{fontBlackTheme}} % 宋体主题
 ```
 
-#### 英文字体设置
-
-* ​**正文字体**​：使用 `\setmainfont` 设置，若要将正文字体修改为 Times New Roman（新罗马字体），可使用 `\setmainfont{Times New Roman}`。
-
-latex
+#### 选择默认主题
 
 ```latex
-\setmainfont{Times New Roman}
+% 在 \iftoggle 之前调用：
+\UseSongFont   % 启用“宋体 + Times New Roman”
+% 或 \UseBlackFont ← 启用“黑体 + Liberation Sans”
 ```
 
-* ​**无衬线字体**​：使用 `\setsansfont` 设置，若修改为新罗马字体类似的无衬线字体，可根据实际字体情况设置，比如 `\setsansfont{Arial}` （Arial 是常见无衬线字体）。若想坚持使用新罗马风格无衬线字体（如果有对应字体），假设字体名为 `Times New Roman Sans`，则：
-
-latex
+#### 根据开关加载字体
 
 ```latex
-\setsansfont{Times New Roman Sans}
+\iftoggle{fontBlackTheme}{
+  % —— 黑体 + Liberation Sans —— 
+  \setmainfont{Liberation Sans}
+  \setCJKmainfont{Noto Sans CJK SC}
+  \setmathfont{TeX Gyre Termes Math}
+}{
+  % —— 宋体 + Times New Roman —— 
+  \setmainfont{Times New Roman}
+  \setCJKmainfont{Noto Serif CJK SC}
+  \setmathfont{TeX Gyre Termes Math}
+}
 ```
 
-* ​**等宽字体**​：使用 `\setmonofont` 设置，若要修改为 Consolas（常见等宽字体），可使用 `\setmonofont{Consolas}`。若有新罗马风格等宽字体（假设名为 `Times New Roman Mono`），则：
+---
 
-latex
+##### 换用其他字体
 
-```latex
-\setmonofont{Times New Roman Mono}
-```
-
-#### 数学公式字体设置
-
-使用 `\setmathfont` 设置数学公式字体，若想让数学部分使用新罗马风格字体，示例：
-
-latex
-
-```latex
-\setmathfont{TeX Gyre Termes Math} % 该字体类似 New Roman 风格
-```
-
-#### 中文字体设置
-
-* ​**主要中文字体**​：用 `\setCJKmainfont` 设置，如 `\setCJKmainfont{Noto Sans CJK SC}`。若要更换中文字体，例如更换为宋体（假设系统中有 `SimSun` 字体），则：
-
-latex
-
-```latex
-\setCJKmainfont{SimSun}
-```
-
-* ​**中文无衬线字体**​：使用 `\setCJKsansfont`，例 `\setCJKsansfont{Noto Sans CJK SC}`。若要更换为黑体（假设系统中有 `SimHei` 字体），则：
-
-latex
-
-```latex
-\setCJKsansfont{SimHei}
-```
-
-* ​**中文等宽字体**​：用 `\setCJKmonofont`，如 `\setCJKmonofont{Noto Sans CJK SC}`。若要更换为其他等宽中文字体，可按需设置。
-
-若无需区分宋体或黑体，相关宏定义可省略。
+只需将 `\setmainfont{…}`、`\setCJKmainfont{…}` 中的字体名改为你想用的即可，重新编译生效。
 
 ### 3. **页眉页脚设置**
 <a id="页眉页脚设置"></a>
