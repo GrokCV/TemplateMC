@@ -82,17 +82,37 @@
 
 - 直接修改 `\begin{frame}{标题内容}` 中的文字：
 
-#### 封面页
+#### 修改封面页
 
 - 修改标题：编辑 `\mytitle` 的内容。
 - 修改作者：编辑 `\myauthor` 的内容。
 - 修改机构：编辑 `\myinstitute` 的内容。
 
-#### 目录页
+#### 修改目录页
 
 - 修改目录项：在 `enumerate` 环境中添加或删除 `\item`。
 
-#### 内容页
+#### 隐藏 frame 横线
+
+- frame 没有title的话，那条线不显示
+
+有页标题/横线
+
+```latex
+\begin{frame}[有页标题/横线]
+...
+\end{frame}
+```
+
+无页标题/横线
+
+```latex
+\begin{frame}
+...
+\end{frame}
+```
+
+#### 不使用
 
 - 添加新页面：复制 `frame` 环境并修改内容。
 - 修改表格：使用 `\ThreeLineTable` 或其他表格样式。
